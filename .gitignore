@@ -1,0 +1,42 @@
+# Logs
+bakery_store/logs
+bakery_store/*.log
+bakery_store/npm-debug.log*
+bakery_store/yarn-debug.log*
+bakery_store/yarn-error.log*
+
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+bakery_store/build/Release
+
+# Dependency directories
+bakery_store/node_modules
+bakery_store/jspm_packages
+
+# Distribution directories
+bakery_store/dist/
+
+# Typescript v1 declaration files
+bakery_store/typings/
+
+# Optional npm cache directory
+bakery_store/.npm
+
+# Optional eslint cache
+bakery_store/.eslintcache
+
+# Optional REPL history
+bakery_store/.node_repl_history
+
+# Output of 'npm pack'
+bakery_store/*.tgz
+
+# Yarn Integrity file
+bakery_store/.yarn-integrity
+
+# Others
+bakery_store/.cache/
+bakery_store/.env
+bakery_store/.DS_Store
+bakery_store/coverage/
+bakery_store/.vscode/
