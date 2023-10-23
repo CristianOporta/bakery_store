@@ -10,6 +10,26 @@ export const getProductos = () => {
   return api.get('/productos');
 };
 
-export const postProductos = (datos) => {
-  return api.post('/productos', datos);
+export const getCategorias = () => {
+  return api.get('/categorias');
+};
+
+export const getProductosPorCategoria = (idCategoria) => {
+  return api.get(`/categoria/${idCategoria}`); // Construye la URL con el parámetro idCategoria
+};
+
+export const createProducto = (nuevoProducto) => {
+  return api.post('/producto/create', nuevoProducto); // Utiliza la misma ruta que definiste en el servidor
+};
+
+export const editProducto = (idProducto, productoActualizado) => {
+  return api.put(`/producto/edit/${idProducto}`, productoActualizado);
+};
+
+export const getProducto = (idProducto) => {
+  return api.get(`/producto/${idProducto}`);
+};
+
+export const deleteProducto = (idProducto) => {
+  return api.delete(`/producto/${idProducto}`);
 };

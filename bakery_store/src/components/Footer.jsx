@@ -1,5 +1,6 @@
 import React from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Footer = () => { // Estilo para las etiquetas "a"
     const linkStyle = {
@@ -26,8 +27,8 @@ const Footer = () => { // Estilo para las etiquetas "a"
                         <h5 className="mb-3">Enlaces útiles</h5>
                         <ul className="list-unstyled">
                             <li>
-                                <a href="/"
-                                    style={linkStyle}>Inicio</a>
+                                <Link to="/"
+                                    style={linkStyle}>Inicio</Link>
                             </li>
                             <li>
                                 <a href="/about"
