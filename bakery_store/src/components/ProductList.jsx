@@ -27,7 +27,7 @@ const ProductList = () => {
                             producto.id
                         }
                             className="col-4">
-                            <ProductCard producto={producto} />
+                            <ProductCard producto={producto}  />
                         </div>
 
                     ))
