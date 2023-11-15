@@ -9,6 +9,7 @@ const ProductCard = ({ producto }) => {
         maxHeight: '100%',
         objectFit: 'cover'
     };
+    console.log(producto)
     const handleDelete = async () => {
         if (window.confirm('¿Estás seguro de que deseas eliminar este producto?')) {
             try {
@@ -22,20 +23,27 @@ const ProductCard = ({ producto }) => {
             }
         }
     };
-
+    
     return (
         <div className="product-card card rounded shadow-sm bg-white mb-4">
             <img
-                src={producto.imagen}
+                src={`http://localhost:5000/${producto.imagen}`}
                 alt={producto.nombre}
                 style={imageStyle}
             />
+            {console.log(producto.image)}
             <div className='p-3'>
                 <h4>{producto.nombre}</h4>
                 <p>{producto.descripción}</p>
                 <p>Precio: ${producto.precio}</p>
                 <Link to={`/producto/edit/${producto.id}`}>
                     <button type='button' className='btn btn-primary btnEditar'>Editar</button>
+                </Link>
+                {"  "}
+                <Link>
+                    <Button variant='success' className='btnEliminar'>
+                        Carrito
+                    </Button>
                 </Link>
                 {"  "}
                 <Link to="/inicio">

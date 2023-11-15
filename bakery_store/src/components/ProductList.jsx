@@ -8,11 +8,18 @@ const ProductList = () => {
     const [productos, setProductos] = useState([]);
 
     useEffect(() => {
-        getProductos().then((response) => {
-            setProductos(response.data);
-        }).catch((error) => {
-            console.error('Error al obtener productos: ' + error);
-        });
+            try {
+                getProductos().then((response) => {
+                    setProductos(response.data);
+                }).catch((error) => {
+                    console.error('Error al obtener productos: ' + error);
+                });
+                
+            } catch (error) {
+                console.log("Hola el error fue :D :", error)
+            }
+
+
     }, []);
 
     return (
@@ -24,7 +31,7 @@ const ProductList = () => {
                 {
                     productos.map((producto, index) => (
                         <div key={
-                            producto.id
+                            index
                         }
                             className="col-4">
                             <ProductCard producto={producto}  />

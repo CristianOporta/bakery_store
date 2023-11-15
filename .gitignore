@@ -10,7 +10,8 @@ bakery_store/yarn-error.log*
 bakery_store/build/Release
 
 # Dependency directories
-bakery_store/node_modules
+bakery_store/node_modules/
+backend/node_modules/
 bakery_store/jspm_packages
 
 # Distribution directories

@@ -33,3 +33,7 @@ export const getProducto = (idProducto) => {
 export const deleteProducto = (idProducto) => {
   return api.delete(`/producto/${idProducto}`);
 };
+
+export const eliminarFoto = (fotoData) => {
+  return api.post('/producto/deleteFoto', fotoData);
+};

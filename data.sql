@@ -15,12 +15,12 @@ INSERT INTO usuarios (nombre, email, contraseña, es_administrador) VALUES
 
 -- Insertar productos (puedes agregar más productos)
 INSERT INTO productos (nombre, descripción, imagen, precio, id_categoria) VALUES
-('Tarta de Fresa', 'Una deliciosa tarta de fresa con crema batida.', 'https://i.imgur.com/7MWs3eu.png', 20.99, 1),
-('Cupcake de Chocolate', 'Un tierno cupcake de chocolate con frosting.', 'https://i.imgur.com/bJVLAI3.png', 3.99, 2),
-('Galletas de Avena', 'Galletas crujientes de avena con pasas.', 'https://i.imgur.com/fs37XMY.png', 4.99, 3),
-('Pan de Centeno', 'Pan integral de centeno recién horneado.', 'https://i.imgur.com/Mpe7bXi.png', 2.49, 4),
-('Pastel de Bodas Clásico', 'Un pastel elegante para tu día especial.', 'https://i.imgur.com/km75pvv.png', 99.99, 5),
-('Pastel de Chocolate Sin Gluten', 'Un pastel sin gluten para los que tienen restricciones alimenticias.', 'https://i.imgur.com/vTHkEnv.png', 29.99, 6);
+('Tarta de Fresa', 'Una deliciosa tarta de fresa con crema batida.', '2699423262290-235003827.png', 20.99, 1),
+('Cupcake de Chocolate', 'Un tierno cupcake de chocolate con frosting.', '7124685021359-941278563.png', 3.99, 2),
+('Galletas de Avena', 'Galletas crujientes de avena con pasas.', '3987562147092-562831947.png', 4.99, 3),
+('Pan de Centeno', 'Pan integral de centeno recién horneado.', '5293476102856-149783265.png', 2.49, 4),
+('Pastel de Bodas Clásico', 'Un pastel elegante para tu día especial.', '8462097315743-325698471.png', 99.99, 5),
+('Pastel de Chocolate Sin Gluten', 'Un pastel sin gluten para los que tienen restricciones alimenticias.', '2134758960428-987365214.png', 29.99, 6);
 
 -- Insertar algunos pedidos
 INSERT INTO pedidos (id_usuario, precio_total) VALUES

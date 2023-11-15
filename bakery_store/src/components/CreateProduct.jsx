@@ -1,28 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
-import './CreateProduct.css'
-import { createProducto, getCategorias } from '../api/api'; // Asegúrate de importar createProducto
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+import { Form, Button,  } from 'react-bootstrap';
+import { createProducto, getCategorias } from '../api/api';
+import { useNavigate } from 'react-router-dom';
 
 const CreateProduct = () => {
     const [producto, setProducto] = useState({
         nombre: '',
         descripción: '',
-        imagen: '',
+        imagen: null, // Cambiamos a null para manejar archivos
         precio: 0,
-        id_categoria: 1, // Ajusta el ID de la categoría según tus necesidades
+        id_categoria: 1,
     });
-    
-    const [categorias, setCategorias] = useState([]); // Estado para almacenar las categorías
-    const navigate = useNavigate(); // Obtiene la función de navegación
+
+    const [categorias, setCategorias] = useState([]);
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setProducto({ ...producto, [name]: value });
+        const { name, value, type } = e.target;
+        console.log(value);
+        setProducto({ ...producto, [name]: type === 'file' ? e.target.files[0] : value });
     };
 
     useEffect(() => {
-        // Cargar las categorías cuando el componente se monte
         getCategorias()
             .then((response) => {
                 setCategorias(response.data);
@@ -30,27 +29,31 @@ const CreateProduct = () => {
             .catch((error) => {
                 console.error('Error al obtener categorías: ' + error);
             });
-    }, []); // El arreglo de dependencias vacío asegura que se carguen las categorías una sola vez al montar el componente
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await createProducto(producto);
-            // Redirige a la página principal después de crear un nuevo producto
+            const formData = new FormData();
+            formData.append('nombre', producto.nombre);
+            formData.append('descripcion', producto.descripción);
+            
+            formData.append('imagen', producto.imagen); // Agregamos la imagen al formData
+            formData.append('precio', producto.precio);
+            formData.append('id_categoria', producto.id_categoria);
+
+            
+            await createProducto(formData); // Enviamos el formData en lugar del objeto directamente
             navigate('/');
-            // Maneja la respuesta, por ejemplo, mostrando un mensaje de éxito o redirigiendo a la lista de productos.
         } catch (error) {
             console.error('Error al crear el producto:', error);
-            // Maneja los errores según tus necesidades.
         }
     };
 
     return (
         <div className="d-flex justify-content-center">
-
             <Form onSubmit={handleSubmit}>
                 <h2>Crear Nuevo Producto</h2>
-
                 <Form.Group controlId="nombre">
                     <Form.Label>Nombre:</Form.Label>
                     <Form.Control type="text" name="nombre" value={producto.nombre} onChange={handleChange} required />
@@ -60,8 +63,8 @@ const CreateProduct = () => {
                     <Form.Control as="textarea" rows={3} name="descripción" value={producto.descripción} onChange={handleChange} />
                 </Form.Group>
                 <Form.Group controlId="imagen">
-                    <Form.Label>Imagen URL:</Form.Label>
-                    <Form.Control type="text" name="imagen" value={producto.imagen} onChange={handleChange} />
+                    <Form.Label>Imagen:</Form.Label>
+                    <Form.Control type="file" name="imagen" accept="image/*" onChange={handleChange} required/>
                 </Form.Group>
                 <Form.Group controlId="precio">
                     <Form.Label>Precio:</Form.Label>
@@ -75,7 +78,6 @@ const CreateProduct = () => {
                                 {categoria.nombre}
                             </option>
                         ))}
-
                     </Form.Control>
                 </Form.Group>
                 <p></p>
@@ -89,3 +91,4 @@ const CreateProduct = () => {
 };
 
 export default CreateProduct;
+
